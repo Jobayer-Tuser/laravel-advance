@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 #controller with passing argument with and without value
 Route::get('/home/{name?}', [HomeController::class, 'index'])->name('home.index');
+
+#controller for return views
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
