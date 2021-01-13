@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,11 @@ Route::get('/home/{name?}', [HomeController::class, 'index'])->name('home.index'
 
 #controller for return views
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+#controller for http client get request data
+Route::get('/post', [ClientController::class, 'getAllPost'])->name('posts.getAllPost');
+Route::get('/post/{id}', [ClientController::class, 'getPostById'])->name('posts.getPostById');
+Route::get('/add-post', [ClientController::class, 'addPost'])->name('posts.addPost');
+Route::get('/update-post/{id}', [ClientController::class, 'updatePost'])->name('posts.updatePost');
+Route::get('/delete-post/{id}', [ClientController::class, 'deletePost'])->name('posts.deletePost');
+
