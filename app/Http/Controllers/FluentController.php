@@ -40,7 +40,6 @@ class FluentController extends Controller
         
         $trim = Str::of("/Laravel8/")->trim('/');
         echo $trim ."</br>"; #output [laravel8] 
-
-        
+                
     }
 }
