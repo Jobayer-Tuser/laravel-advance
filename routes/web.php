@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\FluentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +31,7 @@ Route::get('/post/{id}', [ClientController::class, 'getPostById'])->name('posts.
 Route::get('/add-post', [ClientController::class, 'addPost'])->name('posts.addPost');
 Route::get('/update-post/{id}', [ClientController::class, 'updatePost'])->name('posts.updatePost');
 Route::get('/delete-post/{id}', [ClientController::class, 'deletePost'])->name('posts.deletePost');
+
+#fluent string routes
+Route::get('/fluent-string', [FluentController::class , 'index'])->name('fluent.index');
 
