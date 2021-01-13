@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FluentController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +36,11 @@ Route::get('/delete-post/{id}', [ClientController::class, 'deletePost'])->name('
 
 #fluent string routes
 Route::get('/fluent-string', [FluentController::class , 'index'])->name('fluent.index');
+
+#http request method routes
+Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+
+#login form get request
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
