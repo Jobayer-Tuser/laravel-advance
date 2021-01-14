@@ -15,7 +15,11 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        //after making this class run : composer dump-autoload in your command line
+        /*
+            after making this class run : [composer dump-autoload] in your command line
+            after that to seed the data [php artisan bd:seed]
+            to fresh datable and again seed [php artisan migrate:fresh --seed]
+        */
         DB::table('posts')->insert([
             'title' => 'This is the title',
             'description' => 'This is the description of the table',
