@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;//for crud operation we need to add DB
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -74,5 +75,10 @@ class PostsController extends Controller
                     ->rightJoin('posts', 'users.id', '=', 'posts.user_id')
                     ->get();
         return $rightJoin;
+    }
+    
+    public function modelIndex(){
+        $post = Post::all();
+        return $post;
     }
 }
