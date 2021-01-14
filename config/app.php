@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        //App\Providers\PaymentServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,7 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         
-        //'Payment' => App\CustomFacades\PaymentFacade::class,#custom facade
+        'Payment' => App\CustomFacades\PaymentFacade::class,#custom facade
 
     ],
 

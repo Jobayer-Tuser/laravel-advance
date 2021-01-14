@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\EmailController;
 use App\CustomFacades\Payment;
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,14 @@ use App\CustomFacades\Payment;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{locale}', function($locale){
-	App::setLocale($locale);
-	return view('welcome');
-});
-
-//Route::get('/payment', function(){
-//	return Payment::process();
+//Route::get('/{locale}', function($locale){
+//	App::setLocale($locale);
+//	return view('welcome');
 //});
+
+Route::get('/payment', function(){
+	return Payment::process();
+});
 
 Route::get('/', [ProductController::class, 'index'])->name('product.index');
 
@@ -69,3 +70,6 @@ Route::post('/save-posts', [PostsController::class, 'store'])->name('posts.store
 Route::get('/inner-join', [PostsController::class, 'innerJoinClause'])->name('posts.innerJoin');
 Route::get('/left-join', [PostsController::class, 'leftJoinClause'])->name('posts.leftJoin');
 Route::get('/right-join', [PostsController::class, 'rightJoinClause'])->name('posts.rightJoin');
+
+#route for sending mail
+Route::get('/send-email', [EmailController::class, 'sendMail']);
