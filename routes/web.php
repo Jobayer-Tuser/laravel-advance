@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FluentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,8 +41,14 @@ Route::get('/fluent-string', [FluentController::class , 'index'])->name('fluent.
 #http request method routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
-#login form get request
+#route login form get request
 //Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('checkuser');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+#session route
+Route::get('/session/get', [SessionController::class, 'getSessionData'])->name('session.get');
+Route::get('/session/set', [SessionController::class, 'storeSessionData'])->name('session.store');
+Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
+Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
 
