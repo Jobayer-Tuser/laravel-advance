@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PostsController;
+use App\CustomFacades\Payment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,10 @@ use App\Http\Controllers\PostsController;
 Route::get('/{locale}', function($locale){
 	App::setLocale($locale);
 	return view('welcome');
+});
+
+Route::get('/payment', function(){
+	return Payment::process();
 });
 
 Route::get('/', [ProductController::class, 'index'])->name('product.index');
