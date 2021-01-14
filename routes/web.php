@@ -57,3 +57,6 @@ Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/create-posts', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/save-posts', [PostsController::class, 'store'])->name('posts.store');
+Route::get('/inner-join', [PostsController::class, 'innerJoinClause'])->name('posts.innerJoin');
+Route::get('/left-join', [PostsController::class, 'leftJoinClause'])->name('posts.leftJoin');
+Route::get('/right-join', [PostsController::class, 'rightJoinClause'])->name('posts.rightJoin');

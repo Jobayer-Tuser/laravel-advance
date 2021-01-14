@@ -34,7 +34,7 @@ class PostsController extends Controller
     public function edit($id){
         
         $posts = DB::table('posts')->where('id', $id)->first();
-        return view('single-post', compact('posts');
+        return view('single-post', compact('posts'));
     }
     public function update(Request $request, $id){
         
@@ -48,5 +48,31 @@ class PostsController extends Controller
         DB::table('posts')->where('id', $id)->delete();
         return back()->with('post_deleted', 'post deleted successfully');
         
+    }
+    
+    
+    public function innerJoinClause(){
+        
+        $innerJoin = DB::table('users')
+                ->join('posts', 'users.id', '=',  'posts.user_id')
+                ->select('users.name', 'posts.title', 'posts.description')
+                ->get();
+        return $innerJoin;
+    }
+    
+    public function leftJoinClause(){
+        
+        $leftJoin = DB::table('users')
+                    ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+                    ->get();
+        return $leftJoin;
+    }
+    
+    public function rightJoinClause(){
+        
+        $rightJoin = DB::table('users')
+                    ->rightJoin('posts', 'users.id', '=', 'posts.user_id')
+                    ->get();
+        return $rightJoin;
     }
 }
