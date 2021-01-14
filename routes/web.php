@@ -9,6 +9,7 @@ use App\Http\Controllers\FluentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,7 @@ Route::get('/session/set', [SessionController::class, 'storeSessionData'])->name
 Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
 Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
 
+#post route
+Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+Route::get('/create-posts', [PostsController::class, 'create'])->name('posts.create');
+Route::post('/save-posts', [PostsController::class, 'store'])->name('posts.store');
