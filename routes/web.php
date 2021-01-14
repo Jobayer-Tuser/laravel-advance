@@ -41,6 +41,7 @@ Route::get('/fluent-string', [FluentController::class , 'index'])->name('fluent.
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
 #login form get request
+//Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('checkuser');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
