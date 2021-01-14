@@ -26,9 +26,9 @@ Route::get('/{locale}', function($locale){
 	return view('welcome');
 });
 
-Route::get('/payment', function(){
-	return Payment::process();
-});
+//Route::get('/payment', function(){
+//	return Payment::process();
+//});
 
 Route::get('/', [ProductController::class, 'index'])->name('product.index');
 
