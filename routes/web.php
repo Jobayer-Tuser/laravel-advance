@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Customer\CustomerController;
 use App\CustomFacades\Payment;
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,7 @@ Route::get('/session/set', [SessionController::class, 'storeSessionData'])->name
 Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
 Route::get('/session/remove', [SessionController::class, 'removeSessionData'])->name('session.remove');
 
-#post route
+#post for join query route
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/create-posts', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/save-posts', [PostsController::class, 'store'])->name('posts.store');
@@ -73,3 +74,10 @@ Route::get('/right-join', [PostsController::class, 'rightJoinClause'])->name('po
 
 #route for sending mail
 Route::get('/send-email', [EmailController::class, 'sendMail']);
+
+#route for Customer controller [repository pattern]
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
+Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name('customer.show');
+Route::get('/customer/{customerId}/update', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer/{customerId}/delete', [CustomerController::class, 'destroy'])->name('customer.delete');
+
