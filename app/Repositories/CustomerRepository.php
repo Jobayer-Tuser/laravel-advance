@@ -8,14 +8,24 @@ class CustomerRepository implements CustomerRepositoryInterface
 {
     public function all()
     {
-         return $customer = Customer::orderBy('name')
+         /*return $customer = Customer::orderBy('name')
             ->where('status', 'Active')
             ->with('user')//this is uses for foreign key or pulling data from user
             ->get()
             ->map(function ($customer){
                 //$this->format($customer); #this we use to acces the format function bellow
                 return $customer->format();
-            });
+            });*/
+
+         /*
+          * there is also a short form of upper code
+          * */
+
+        return $customer = Customer::orderBy('name')
+            ->where('status', 'Active')
+            ->with('user')
+            ->get()
+            ->map->format();
     }
 
     public function findById($customerId)
