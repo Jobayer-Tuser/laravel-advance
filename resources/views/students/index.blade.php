@@ -18,12 +18,12 @@
             </tr>
           </thead>
           <tbody>
-{{--            <tr>--}}
+            <tr>
 {{--              <th scope="row">1</th>--}}
 {{--              <td>Mark</td>--}}
 {{--              <td>Otto</td>--}}
 {{--              <td>@mdo</td>--}}
-{{--            </tr>--}}
+            </tr>
           </tbody>
         </table>
       </div>
@@ -70,15 +70,18 @@
     <script type="text/javascript">
         $(document).ready(function (){
 
-            //get student data via ajax call
-            $.get('{{route('student.data')}}', function(response){
-                console.log(response);
-                $.each(response, function (i, value){
-                    $('#studentTable tbody')
-                        .append('<tr><td>'+ value.id+'</td><td>'+ value.first_name+'</td><td>'+value.last_name +'</td><td>'+value.email+'</td><td>'+value.phone+'</td><td><a href="#" data-eid="'+value.id+'" class="btn btn-warning btn-sm>">Edit</a> <a href="#" data-did="'+value.id+'" class="btn btn-danger btn-xs>">Delete</a></td></tr>');
+            getStudentData();// call function
+            function getStudentData() {
+                //get student data via ajax call
+                $.get('{{route('student.data')}}', function (response) {
+                    console.log(response);
+                    // $.each(response, function (i, value){
+                    //     $('#studentTable tbody')
+                    //         .append('<tr><td>'+ value.id+'</td><td>'+ value.first_name+'</td><td>'+value.last_name +'</td><td>'+value.email+'</td><td>'+value.phone+'</td><td><a href="#" data-eid="'+value.id+'" class="btn btn-warning btn-sm>">Edit</a> <a href="#" data-did="'+value.id+'" class="btn btn-danger btn-xs>">Delete</a></td></tr>');
+                    // });
+                    $('#studentTable tbody').html(response);
                 });
-            });
-
+            }
             //csrf token setup in ajax header
             $.ajaxSetup({
                  headers: {

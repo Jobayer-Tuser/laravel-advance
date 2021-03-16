@@ -14,8 +14,14 @@ class StudentController extends Controller
     }
     public function getData()
     {
-        $student = Student::all();
-        return response($student);
+        $students = Student::orderBy('id','DESC')->get();
+        $data = '';
+        $n= 1;
+        foreach($students AS $student){
+            $data .='<tr><td>'.$n++.'</td><td>'.$student['first_name'].'</td><td>'.$student['last_name'].'</td><td>'.$student['email'].'</td><td>'.$student['phone'].'</td><td><a class="btn btn-warning btn-sm" data-eid="'.$student['id'].'">Edit</a></td></tr>';
+        }
+        return response($data);
+
     }
 
     public function create(Request $request){
