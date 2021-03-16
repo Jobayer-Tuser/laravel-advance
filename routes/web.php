@@ -50,8 +50,6 @@ Route::get('/delete-post/{id}', [ClientController::class, 'deletePost'])->name('
 #fluent string routes
 Route::get('/fluent-string', [FluentController::class , 'index'])->name('fluent.index');
 
-#http request method routes
-Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
 #route login form get request
 //Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('checkuser');
@@ -81,3 +79,14 @@ Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name(
 Route::get('/customer/{customerId}/update', [CustomerController::class, 'update'])->name('customer.update');
 Route::get('/customer/{customerId}/delete', [CustomerController::class, 'destroy'])->name('customer.delete');
 
+#http request method routes (Student Crud Operation using ajax)
+
+Route::group(['prefix' => 'student'], function(){
+    Route::get('/', [StudentController::class, 'index'])->name('student.index');
+    Route::get('/get', [StudentController::class, 'getData'])->name('student.data');
+    Route::get('/create', [StudentController::class, 'create'])->name('student.create');
+    Route::post('/store', [StudentController::class, 'store'])->name('student.store');
+    Route::get('/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
+    Route::post('/update/{student}', [StudentController::class, 'update'])->name('student.update');
+    Route::post('/delete/{student}', [StudentController::class, 'destroy'])->name('student.delete');
+});
